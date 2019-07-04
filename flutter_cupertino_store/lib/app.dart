@@ -11,13 +11,49 @@ class CupertinoStoreApp extends StatelessWidget {
 }
 
 class CupertinoStoreHomePage extends StatelessWidget {
-  @override 
+  @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        middle: const Text('Cupertino Store'),
-      ),
-      child: Container(),
-    );
+    // feature 'pages' 1 product list
+    @override
+    Widget build(BuildContext context) {
+      return CupertinoTabScaffold(
+        tabBar: CupertinoTabBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.home),
+              title: Text('Products'),
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(CupertinoIcons.search), title: Text('Search')),
+            BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.shopping_cart),
+              title: Text('Cart'),
+            ),
+          ],
+        ),
+        tabBuilder: (context, index) {
+          switch (index) {
+            case 0:
+              return CupertinoTabView(builder: (context) {
+                return CupertinoPageScaffold(
+                  child: ProductListTab(),
+                );
+              });
+            case 1:
+              return CupertinoTabView(builder: (context) {
+                return CupertinoPageScaffold(
+                  child: SearchTab(),
+                );
+              });
+            case 2:
+              return CupertinoTabView(builder: (context) {
+                return CupertinoPageScaffold(
+                  child: ShoppingCartTab(),
+                );
+              });
+          }
+        },
+      );
+    }
   }
 }
