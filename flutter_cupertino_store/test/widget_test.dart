@@ -9,7 +9,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:flutter_cupertino_store/main.dart';
-import 'app.dart';
+// Select a file in Finder then press alt-command-c to copy-paste the file full path
+// Use this path for the import
+import '/Users/tristanlucas/FlutterSDK/myApps/flutter_cupertino/flutter_cupertino_store/lib/app.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
